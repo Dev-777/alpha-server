@@ -7,31 +7,15 @@ const port = process.env.PORT || 4000;
 const cors = require("cors");
 const mongoose = require("mongoose");
 
-const signUp = require('./models/user/User.model')
-
 app.use(require("morgan")("dev"));
 app.use(cors());
 dotenv.config();
 
-
-const user= {
-  'firstName': 'test first name',
-  'lastName': 'last name test ',
-  'email': 'email test ',
-  'password': '111111',
-}
-
-const newUser = new signUp(user)
-
-
 mongoose.connect(
   process.env.DATABASE_ACCES,
-  { useNewUrlParser: true, useUnifiedTopology: true },
-  () => newUser.save()
+  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
+  () => console.log("db connected!")
 );
-
-
-
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

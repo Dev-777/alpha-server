@@ -28,4 +28,4 @@ const signUp = new mongoose.Schema({
   // },
 });
 
-module.exports = mongoose.model("user", signUp);
+module.exports = mongoose.model("users", signUp);
