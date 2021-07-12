@@ -17,15 +17,11 @@ const signUp = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // date: {
-  //   type: Date,
-  //   default: Date.now,
-  // },
-  // id: {
-  //   type: String,
-  //   required: true,
-  //   unique: true,
-  // },
+  roles: [{ type: String, ref: "user" }],
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = mongoose.model("users", signUp);
